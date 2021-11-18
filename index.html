@@ -1,0 +1,43 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nationalize API</title>
+    
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <form>
+    <h1 >NATIONALIZE API SEARCH FORM</h1>
+    <h2>Predict the nationality of a name</h2>
+    <h4>Nationalize.io predicts the nationality of a person given their name </h4>
+    
+    <input type="text" placeholder="Enter Your Name" id="type-bar" >
+    <button >SEARCH</button>
+</form>
+    <script>
+        var myform = document.createElement("div");
+        myForm.innerHTML='<div><form id="userForm">  <input type="text" id="search" name="keyword" placeholder="search">  <button type="submit" value="Submit">search</button></input></form></div>'
+        var form =document.getElementById("userform")
+        form.addEventListener("submit",async function(element){
+        
+        element.preventDefault();
+const keywords = element.target.keyword.value;
+var url=`https://api.nationalize.io/?name=${keywords}`
+console.log(keywords)
+try {
+      response = await fetch(url).then((res) => res.json());
+    } catch (error) {
+        alert("please use correct keywordagain")
+    }
+    var data = response.results;
+    console.log(data);
+
+
+        
+    </script>
+    
+</body>
+</html> 
